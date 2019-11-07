@@ -13,8 +13,8 @@ const commentSchema = new mongoose.Schema(
     textFr: {
       type: String,
     },
-    hadithId: { type: mongoose.Schema.Types.ObjectId, ref: 'Hadith' },
-    authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
+    hadith: { type: mongoose.Schema.Types.ObjectId, ref: 'Hadith' },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
   },
   {
     timestamps: true,

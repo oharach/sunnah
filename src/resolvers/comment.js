@@ -47,13 +47,13 @@ export default {
   Mutation: {
     createComment: combineResolvers(
       isAuthenticated,
-      async (parent, { textAr, textEn, textFr, authorId, hadithId }, { models }) => {
+      async (parent, { textAr, textEn, textFr, author, hadith }, { models }) => {
         const comment = await models.Comment.create({
           textAr,
           textEn,
           textFr,
-          authorId,
-          hadithId
+          author,
+          hadith
         });
 
         return comment;
@@ -62,10 +62,10 @@ export default {
 
     updateComment: combineResolvers(
       isAuthenticated,
-      async (parent, { id, textAr, textEn, textFr, authorId, hadithId }, { models }) => {
+      async (parent, { id, textAr, textEn, textFr, author, hadith }, { models }) => {
         return await models.Comment.findByIdAndUpdate(
           id,
-          { textAr, textEn, textFr, authorId, hadithId },
+          { textAr, textEn, textFr, author, hadith },
           { new: true },
         );
       },

@@ -11,12 +11,16 @@ export default gql`
       textAr: String!
       textEn: String
       textFr: String
+      author: ID!
+      hadith: ID!
     ): Comment!
     updateComment(
       id: ID!
       textAr: String
       textEn: String
       textFr: String
+      author: ID!
+      hadith: ID!
     ): Comment!
     deleteComment(id: ID!): Boolean!
   }
