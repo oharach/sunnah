@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import User from './user';
 import Author from './author';
 import Hadith from './hadith';
+import Comment from './comment';
 
 const connectDb = () => {
   if (process.env.TEST_DATABASE_URL) {
@@ -20,7 +21,7 @@ const connectDb = () => {
   }
 };
 
-const models = { User, Author, Hadith };
+const models = { User, Author, Hadith, Comment };
 
 export { connectDb };
 

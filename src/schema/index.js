@@ -3,6 +3,7 @@ import { gql } from 'apollo-server-express';
 import userSchema from './user';
 import authorSchema from './author';
 import hadithSchema from './hadith';
+import commentSchema from './comment';
 
 const linkSchema = gql`
   scalar Date
@@ -16,4 +17,4 @@ const linkSchema = gql`
   }
 `;
 
-export default [linkSchema, userSchema, authorSchema, hadithSchema];
+export default [linkSchema, userSchema, authorSchema, hadithSchema, commentSchema];

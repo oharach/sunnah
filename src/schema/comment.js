@@ -2,39 +2,37 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    hadiths(cursor: String, limit: Int): HadithConnection!
-    hadith(id: ID!): Hadith!
+    comments(cursor: String, limit: Int): CommentConnection!
+    comment(id: ID!): Comment!
   }
 
   extend type Mutation {
-    createHadith(
+    createComment(
       textAr: String!
       textEn: String
       textFr: String
-      isnadAr: String
-    ): Hadith!
-    updateHadith(
+    ): Comment!
+    updateComment(
       id: ID!
       textAr: String
       textEn: String
       textFr: String
-      isnadAr: String
-    ): Hadith!
-    deleteHadith(id: ID!): Boolean!
+    ): Comment!
+    deleteComment(id: ID!): Boolean!
   }
 
-  type HadithConnection {
-    edges: [Hadith!]!
+  type CommentConnection {
+    edges: [Comment!]!
     pageInfo: PageInfo!
   }
 
-  type Hadith {
+  type Comment {
     id: ID!
     textAr: String!
     textEn: String!
     textFr: String!
-    isnadAr: String!
     createdAt: Date!
-    comments: [Comment!]
+    author: Author!
+    hadith: Hadith!
   }
 `;
