@@ -44,10 +44,10 @@ export default {
 
     signIn: async (
       parent,
-      { login, password },
+      { email, password },
       { models, secret },
     ) => {
-      const user = await models.User.findByLogin(login);
+      const user = await models.User.findByLogin(email);
 
       if (!user) {
         throw new UserInputError(
