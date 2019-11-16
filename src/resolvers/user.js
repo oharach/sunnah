@@ -61,7 +61,13 @@ export default {
         throw new AuthenticationError('Invalid password.');
       }
 
-      return { token: createToken(user, secret, '30m') };
+      return {
+        status: true,
+        message: "User signin successful.", 
+        data: {
+          token: createToken(user, secret, '30m')
+        }
+      }
     },
 
     updateUser: combineResolvers(

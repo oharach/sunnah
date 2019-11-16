@@ -13,7 +13,7 @@ export default gql`
       password: String!
     ): Token!
 
-    signIn(email: String!, password: String!): Token!
+    signIn(email: String!, password: String!): Response
     updateUser(email: String!): User!
     deleteUser(id: ID!): Boolean!
   }
@@ -27,4 +27,10 @@ export default gql`
     email: String!
     role: String
   }
+
+  type Response {
+    status: Boolean
+    message: String
+    data: Token
+}
 `;
