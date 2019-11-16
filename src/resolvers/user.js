@@ -5,8 +5,8 @@ import { AuthenticationError, UserInputError } from 'apollo-server';
 import { isAdmin, isAuthenticated } from './authorization';
 
 const createToken = async (user, secret, expiresIn) => {
-  const { id, email, role } = user;
-  return await jwt.sign({ id, email, role }, secret, {
+  const { id, email, username, role } = user;
+  return await jwt.sign({ id, email, username, role }, secret, {
     expiresIn,
   });
 };
@@ -31,15 +31,22 @@ export default {
   Mutation: {
     signUp: async (
       parent,
-      { email, password },
+      { username, email, password },
       { models, secret },
     ) => {
       const user = await models.User.create({
+        username,
         email,
         password,
       });
 
-      return { token: createToken(user, secret, '30m') };
+      return {
+        status: true,
+        message: "User registration successful.", 
+        data: {
+          token: createToken(user, secret, '30m')
+        }
+      }
     },
 
     signIn: async (

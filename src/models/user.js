@@ -4,11 +4,9 @@ import bcrypt from 'bcrypt';
 import isEmail from 'validator/lib/isEmail';
 
 const userSchema = new mongoose.Schema({
-  firstname: {
+  username: {
     type: String,
-  },
-  lastname: {
-    type: String,
+    required: true,
   },
   email: {
     type: String,
